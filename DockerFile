@@ -1,0 +1,22 @@
+FROM debian:bullseye
+MAINTAINER Kinouzero <kevin.lambard@gmail.com>
+
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -q -y install 
+nano 
+sudo 
+net-tools 
+wireless-tools 
+lighttpd 
+php-cgi 
+git
+curl
+systemd
+procps
+wget
+dumb-init
+&& apt-get clean
+
+COPY setup.sh .
+
+EXPOSE 80
+CMD [ "dumb-init" ]
